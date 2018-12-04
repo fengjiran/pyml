@@ -9,6 +9,19 @@ from scipy import sparse
 from fixes import signature
 
 
+##############################################################################
+def _first_and_last_element(arr):
+    """Returns first and last element of numpy array or sparse matrix."""
+    if isinstance(arr, np.ndarray) or hasattr(arr, 'data'):
+        # numpy array or sparse matrix with .data attribute
+        data = arr.data if sparse.issparse(arr) else arr
+        return data.flat[0], data.flat[-1]
+    else:
+        # Sparse matrices without .data attribute. Only dok_matrix at
+        # the time of writing, in this case indexing is fast
+        return arr[0, 0], arr[-1, -1]
+
+
 ###############################################################################
 def _pprint(params, offset=0, printer=repr):
     """Pretty print the dictionary 'params'

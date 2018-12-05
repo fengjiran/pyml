@@ -25,7 +25,7 @@ class Perceptron(object):
                 self.b += self.eta * y[i]
                 cnt = 0
                 epoch += 1
-                if detailed == True:
+                if detailed is True:
                     print("Epoch: ", epoch, ", W: ", self.W, ", b: ", self.b)
 
             i = (i + 1) % x.shape[0]

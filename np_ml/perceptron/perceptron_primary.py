@@ -21,4 +21,11 @@ class Perceptron(object):
         while cnt != x.shape[0] and (self.max_epoch is None or epoch < self.max_epoch):
             cnt += 1
             if y[i] * (np.sum(self.W * x[i, :], axis=-1) + self.b) <= 0:
-                pass
+                self.W += self.eta * y[i] * x[i, :]
+                self.b += self.eta * y[i]
+                cnt = 0
+                epoch += 1
+                if detailed == True:
+                    print("Epoch: ", epoch, ", W: ", self.W, ", b: ", self.b)
+
+            i = (i + 1) % x.shape[0]

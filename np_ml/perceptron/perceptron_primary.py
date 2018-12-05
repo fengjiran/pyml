@@ -13,4 +13,12 @@ class Perceptron(object):
         self.max_epoch = 1000
 
     def fit(self, x, y, detailed=False):
-        pass
+        i = 0
+        cnt = 0
+        epoch = 0
+        finished = True
+
+        while cnt != x.shape[0] and (self.max_epoch is None or epoch < self.max_epoch):
+            cnt += 1
+            if y[i] * (np.sum(self.W * x[i, :], axis=-1) + self.b) <= 0:
+                pass

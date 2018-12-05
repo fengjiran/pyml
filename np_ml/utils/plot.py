@@ -11,3 +11,8 @@ def plot(x, y, **kwargs):
         accuracy = kwargs['accuracy']
     plt.figure()
     plt.scatter(x[:, 0], x[:, 1], c=color)
+    if 'title' in kwargs:
+        plt.suptitle(kwargs['title'])
+    if 'accuracy' in kwargs:
+        plt.title("Accuracy: %.1f%%" % (kwargs['accuracy'] * 100), fontsize=10)
+    plt.show()

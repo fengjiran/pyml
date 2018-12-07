@@ -22,6 +22,8 @@ class Perceptron(object):
         plt.scatter(X[0:50, 1], X[0:50, 2], c='r')
         plt.scatter(X[50:100, 1], X[50:100, 2], c='b')
 
+        xx = np.arange(X[:, 1].min(), X[:, 1].max(), 0.1)
+
     def fit(self, x, y, detailed=False):
         i = 0
         cnt = 0
@@ -45,4 +47,7 @@ if __name__ == '__main__':
     # load dataset
     iris_data = load_iris()
     y = np.sign(iris_data.target[0:100] - 0.5)
-    X = iris_data.data[0:100, [0:3]]
+    X = iris_data.data[0:100]
+    print(X.shape)
+    X = np.c_[(np.array([1] * X.shape[0])).T, X]
+    print(X.shape)

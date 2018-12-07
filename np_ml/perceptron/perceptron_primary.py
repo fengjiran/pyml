@@ -42,4 +42,7 @@ class Perceptron(object):
 
 
 if __name__ == '__main__':
-    pass
+    # load dataset
+    iris_data = load_iris()
+    y = np.sign(iris_data.target[0:100] - 0.5)
+    X = iris_data.data[0:100, [0:3]]

@@ -24,6 +24,10 @@ class Perceptron(object):
 
         xx = np.arange(X[:, 1].min(), X[:, 1].max(), 0.1)
         yy = -(self.w[1] * xx + self.w[0]) / self.w[2]
+        plt.plot(xx, yy)
+
+        plt.grid()
+        plt.pause(1.5)
 
     def fit(self, x, y, detailed=False):
         i = 0

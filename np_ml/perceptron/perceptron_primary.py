@@ -20,6 +20,7 @@ class Perceptron(object):
 
         # 绘制样本点分布
         plt.scatter(X[0:50, 1], X[0:50, 2], c='r')
+        plt.scatter(X[50:100, 1], X[50:100, 2], c='b')
 
     def fit(self, x, y, detailed=False):
         i = 0

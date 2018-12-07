@@ -3,6 +3,7 @@
 import numpy as np
 import numpy.linalg as LA
 from sklearn.datasets import load_iris
+import matplotlib.pyplot as plt
 
 
 class Perceptron(object):
@@ -12,6 +13,13 @@ class Perceptron(object):
         self.W = np.zeros(dim)
         self.b = np.zeros(1)
         self.max_epoch = 1000
+
+    def plot_process(self, X):
+        fig = plt.figure()
+        fig.clear()
+
+        # 绘制样本点分布
+        plt.scatter(X[0:50, 1], X[0:50, 2], c='r')
 
     def fit(self, x, y, detailed=False):
         i = 0

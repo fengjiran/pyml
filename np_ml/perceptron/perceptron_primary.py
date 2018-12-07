@@ -2,6 +2,7 @@
 # primary learning algorithm
 import numpy as np
 import numpy.linalg as LA
+from sklearn.datasets import load_iris
 
 
 class Perceptron(object):

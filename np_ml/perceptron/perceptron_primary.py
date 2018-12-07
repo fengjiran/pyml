@@ -39,11 +39,9 @@ class Perceptron(object):
                 if t % 10 == 0 and detailed:
                     self.plot_process(X)
 
-
     def predict(self, X):
         X = np.atleast_2d(X)
         return np.sign(np.dot(X, self.w))
-
 
     def plot_process(self, X):
         fig = plt.figure()
@@ -85,7 +83,9 @@ if __name__ == '__main__':
     # load dataset
     iris_data = load_iris()
     y = np.sign(iris_data.target[0:100] - 0.5)
-    X = iris_data.data[0:100]
+    X = iris_data.data[0:100, 0:2]
     print(X.shape)
     X = np.c_[(np.array([1] * X.shape[0])).T, X]
-    print(X.shape)
+
+    clf = Perceptron(15, 0.03)
+    clf.fit(X, y, 'batch')

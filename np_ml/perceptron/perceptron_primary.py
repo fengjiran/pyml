@@ -1,5 +1,6 @@
 # Simple implementation for 1 layer perceptron
 # primary learning algorithm
+import random
 import numpy as np
 # import numpy.linalg as LA
 from sklearn.datasets import load_iris
@@ -31,7 +32,13 @@ class Perceptron(object):
                 if error_cnt == 0:
                     break
         elif func == 'SGD' or func == 'sgd':
-            pass
+            for t in range(self.n_iter):
+                i = random.randint(0, n_samples)
+                if self.predict(X[i])[0] != y[i]:
+                    self.w += self.eta * y[i] * X[i]
+                if t % 10 == 0 and detailed:
+                    self.plot_process(X)
+
 
     def predict(self, X):
         X = np.atleast_2d(X)

@@ -23,12 +23,15 @@ class Perceptron(object):
         plt.scatter(X[50:100, 1], X[50:100, 2], c='b')
 
         xx = np.arange(X[:, 1].min(), X[:, 1].max(), 0.1)
+        yy = -(self.w[1] * xx + self.w[0]) / self.w[2]
 
     def fit(self, x, y, detailed=False):
         i = 0
         cnt = 0
         epoch = 0
         finished = True
+        self.w = None
+
 
         while cnt != x.shape[0] and (self.max_epoch is None or epoch < self.max_epoch):
             cnt += 1

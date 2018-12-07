@@ -39,3 +39,7 @@ class Perceptron(object):
                     print("Epoch: ", epoch, ", W: ", self.W, ", b: ", self.b)
 
             i = (i + 1) % x.shape[0]
+
+
+if __name__ == '__main__':
+    pass
